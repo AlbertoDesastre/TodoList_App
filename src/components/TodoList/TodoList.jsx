@@ -13,7 +13,7 @@ const TodoList = () => {
         // console.log(todo.completed);
 
         return (
-          <li key={todo.index}>
+          <li key={todo.text}>
             <span className={`icon iconDelete `}>X</span>
             <p className="todoText">{todo.text}</p>
             <span
