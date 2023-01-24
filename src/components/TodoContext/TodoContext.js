@@ -4,8 +4,17 @@ import { createContext } from "react";
 const TodoContext = createContext();
 
 const TodoProvider = (props) => {
+  const todos = [
+    { text: "Empezar proyecto", completed: true },
+    { text: "Contar cuantos todos tengo", completed: false },
+    { text: "Filtrar todos", completed: false },
+    { text: "BREJEBREJEBREJE", completed: false },
+  ];
+
   return (
-    <TodoContext.Provider value={{}}>{props.children}</TodoContext.Provider>
+    <TodoContext.Provider value={{ todos }}>
+      {props.children}
+    </TodoContext.Provider>
   );
 };
 

@@ -1,15 +1,9 @@
 import "./TodoList.scss";
-const TodoList = () => {
-  const todoListArray = [
-    { text: "Empezar proyecto", completed: true },
-    { text: "Contar cuantos todos tengo", completed: false },
-    { text: "Filtrar todos", completed: false },
-    { text: "BREJEBREJEBREJE", completed: false },
-  ];
-
+const TodoList = ({ todos }) => {
+  console.log(todos);
   return (
     <ul>
-      {todoListArray.map((todo) => {
+      {todos.map((todo) => {
         // console.log(todo.completed);
 
         return (
