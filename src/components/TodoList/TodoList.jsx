@@ -1,19 +1,19 @@
 import "./TodoList.scss";
-const TodoList = ({ todos }) => {
-  console.log(todos);
+const TodoList = ({ todos, onDelete, onComplete }) => {
   return (
     <ul>
       {todos.map((todo) => {
-        // console.log(todo.completed);
-
         return (
           <li key={todo.text}>
-            <span className={`icon iconDelete `}>X</span>
+            <span className={`icon iconDelete `} onClick={onDelete}>
+              X
+            </span>
             <p className="todoText">{todo.text}</p>
             <span
               className={`icon iconCheck ${
                 todo.completed && "iconCheck--completed"
               } `}
+              onClick={onComplete}
             >
               √
             </span>
