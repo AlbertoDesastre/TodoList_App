@@ -1,25 +1,24 @@
 import "./TodoList.scss";
-const TodoList = () => {
-  const todoListArray = [
-    { text: "Empezar proyecto", completed: true },
-    { text: "Contar cuantos todos tengo", completed: false },
-    { text: "Filtrar todos", completed: false },
-    { text: "BREJEBREJEBREJE", completed: false },
-  ];
-
+const TodoList = ({ todos, deleteTodo, completeTodo }) => {
   return (
     <ul>
-      {todoListArray.map((todo) => {
-        // console.log(todo.completed);
-
+      {todos.map((todo) => {
         return (
-          <li key={todo.index}>
-            <span className={`icon iconDelete `}>X</span>
+          <li key={todo.text}>
+            <span
+              className={`icon iconDelete `}
+              onClick={() => {
+                deleteTodo(todo.text);
+              }}
+            >
+              X
+            </span>
             <p className="todoText">{todo.text}</p>
             <span
               className={`icon iconCheck ${
                 todo.completed && "iconCheck--completed"
               } `}
+              onClick={() => completeTodo(todo.text)}
             >
               √
             </span>

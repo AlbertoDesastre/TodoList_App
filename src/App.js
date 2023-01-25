@@ -1,13 +1,13 @@
 import "./App.scss";
-import TodoList from "./components/TodoList/TodoList";
+import { TodoProvider } from "./components/TodoContext/TodoContext";
+import { AppUI } from "./components/AppUI/AppUI";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Yeah, I'm working</h1>
-      <TodoList></TodoList>
-    </div>
+    <TodoProvider>
+      <AppUI></AppUI>
+    </TodoProvider>
   );
 }
 
-export default App;
+export { App };
