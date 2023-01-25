@@ -4,12 +4,16 @@ import { useContext } from "react";
 import TodoList from "../TodoList/TodoList";
 
 const AppUI = () => {
-  const { todos } = useContext(TodoContext);
+  const { todos, onComplete, onDelete } = useContext(TodoContext);
 
   return (
     <div className="App">
       <h1>Yeah, I'm working</h1>
-      <TodoList todos={todos}></TodoList>
+      <TodoList
+        todos={todos}
+        onComplete={onComplete}
+        onDelete={onDelete}
+      ></TodoList>
     </div>
   );
 };

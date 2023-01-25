@@ -13,7 +13,7 @@ const TodoList = ({ todos, onDelete, onComplete }) => {
               className={`icon iconCheck ${
                 todo.completed && "iconCheck--completed"
               } `}
-              onClick={onComplete}
+              onClick={() => onComplete(todo.text)}
             >
               √
             </span>

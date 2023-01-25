@@ -11,12 +11,19 @@ const TodoProvider = (props) => {
     { text: "BREJEBREJEBREJE", completed: false },
   ]);
 
-  const onComplete = (todos) => {};
+  const onComplete = (text) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === text);
+    // Creo un array completamente nuevo, porque después mi intención es actualizar el Estado del array con su nuevo "todo completed."
+    const newTodos = [...todos];
+    newTodos[todoIndex].completed = true;
+    // Si no hubiese hecho el set con el array nuevo, al actualizar, se me mostaría el array viejo MÁS los elementos nuevos, y eso nanai-
+    setTodos(newTodos);
+  };
 
-  const onDelete = (todos) => {};
+  const onDelete = (todo) => {};
 
   return (
-    <TodoContext.Provider value={{ todos }}>
+    <TodoContext.Provider value={{ todos, onComplete, onDelete }}>
       {props.children}
     </TodoContext.Provider>
   );
