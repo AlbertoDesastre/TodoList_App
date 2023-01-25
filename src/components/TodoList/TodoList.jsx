@@ -5,7 +5,12 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
       {todos.map((todo) => {
         return (
           <li key={todo.text}>
-            <span className={`icon iconDelete `} onClick={deleteTodo}>
+            <span
+              className={`icon iconDelete `}
+              onClick={() => {
+                deleteTodo(todo.text);
+              }}
+            >
               X
             </span>
             <p className="todoText">{todo.text}</p>

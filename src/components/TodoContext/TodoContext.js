@@ -20,7 +20,13 @@ const TodoProvider = (props) => {
     setTodos(newTodos);
   };
 
-  const deleteTodo = (todo) => {};
+  const deleteTodo = (text) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === text);
+    console.log(todoIndex);
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
 
   return (
     <TodoContext.Provider value={{ todos, completeTodo, deleteTodo }}>
