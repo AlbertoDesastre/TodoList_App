@@ -11,6 +11,8 @@ const TodoProvider = (props) => {
     { text: "BREJEBREJEBREJE", completed: false },
   ]);
 
+  const [searchValue, setSearchValue] = useState("");
+
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     // Creo un array completamente nuevo, porque después mi intención es actualizar el Estado del array con su nuevo "todo completed."
@@ -22,14 +24,21 @@ const TodoProvider = (props) => {
 
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
-    console.log(todoIndex);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     setTodos(newTodos);
   };
 
   return (
-    <TodoContext.Provider value={{ todos, completeTodo, deleteTodo }}>
+    <TodoContext.Provider
+      value={{
+        todos,
+        completeTodo,
+        deleteTodo,
+        searchValue,
+        setSearchValue,
+      }}
+    >
       {props.children}
     </TodoContext.Provider>
   );
