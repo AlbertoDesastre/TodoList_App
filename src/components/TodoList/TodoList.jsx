@@ -1,8 +1,8 @@
 import "./TodoList.scss";
-const TodoList = ({ todos, deleteTodo, completeTodo }) => {
+const TodoList = ({ searchedTodos, deleteTodo, completeTodo }) => {
   return (
     <ul>
-      {todos.map((todo) => {
+      {searchedTodos.map((todo) => {
         return (
           <li key={todo.text}>
             <span
