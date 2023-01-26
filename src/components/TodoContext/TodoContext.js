@@ -13,6 +13,19 @@ const TodoProvider = (props) => {
 
   const [searchValue, setSearchValue] = useState("");
 
+  let searchedTodos = [];
+
+  // Si el usuario ha ingresado cualquier letra, y por lo tanto tiene longitud a 1 o superior,
+  // ya no se muestran todos los todos, sino los que coincida con la letra que acaba de poner.
+  if (searchValue.length >= 1) {
+    searchedTodos = todos.filter((todo) => {
+      todo.text.toLocaleLowerCase();
+      searchValue.toLocaleLowerCase();
+      return todo.text.includes(searchValue);
+    });
+  } else {
+    searchedTodos = todos;
+  }
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     // Creo un array completamente nuevo, porque después mi intención es actualizar el Estado del array con su nuevo "todo completed."
@@ -32,7 +45,7 @@ const TodoProvider = (props) => {
   return (
     <TodoContext.Provider
       value={{
-        todos,
+        searchedTodos,
         completeTodo,
         deleteTodo,
         searchValue,
