@@ -14,6 +14,10 @@ const TodoProvider = (props) => {
   const [searchValue, setSearchValue] = useState("");
 
   let searchedTodos = [];
+  const completedTodos = todos.filter((todo) => todo.completed === true).length;
+  /* Esta es otra forma de hacerlo:
+    const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  */
 
   // Si el usuario ha ingresado cualquier letra, y por lo tanto tiene longitud a 1 o superior,
   // ya no se muestran todos los todos, sino los que coincida con la letra que acaba de poner.
@@ -45,6 +49,8 @@ const TodoProvider = (props) => {
   return (
     <TodoContext.Provider
       value={{
+        todos,
+        completedTodos,
         searchedTodos,
         completeTodo,
         deleteTodo,
