@@ -4,7 +4,7 @@ const TodoList = ({ searchedTodos, deleteTodo, completeTodo }) => {
     <ul>
       {searchedTodos.map((todo) => {
         return (
-          <li key={todo.text}>
+          <li key={todo.text} className="li li-todoList">
             <span
               className={`icon iconDelete `}
               onClick={() => {

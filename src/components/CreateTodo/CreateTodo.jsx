@@ -2,17 +2,18 @@ import "./CreateTodo.scss";
 
 const CreateTodo = () => {
   return (
-    <>
+    <div className="createTodo">
+      <h2>Escribe aquí tu Todo</h2>
       <input placeholder="Contratar a este chiquillo..."></input>
       <ul>
         <li>
-          <button>Cancelar</button>
+          <button className="cancelButton">Cancelar</button>
         </li>
         <li>
-          <button>Añadir</button>
+          <button className="addButton">Añadir</button>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 
