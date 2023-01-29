@@ -37,6 +37,13 @@ const TodoProvider = (props) => {
   } else {
     searchedTodos = todos;
   }
+
+  const addTodo = (text) => {
+    console.log(text);
+    const newTodo = { text: text, completed: false };
+    const newTodos = [...todos, newTodo];
+    saveTodos(newTodos);
+  };
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     // Creo un array completamente nuevo, porque después mi intención es actualizar el Estado del array con su nuevo "todo completed."
@@ -63,6 +70,7 @@ const TodoProvider = (props) => {
         deleteTodo,
         searchValue,
         setSearchValue,
+        addTodo,
         loading,
         error,
         openModal,
