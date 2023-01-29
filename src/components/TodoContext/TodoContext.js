@@ -5,15 +5,15 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 const TodoContext = createContext();
 
 const TodoProvider = (props) => {
-  const [todos, setTodos] = useState([
+  /*   const { items: todos, saveItems: saveTodos } = useLocalStorage("todos", [
     { text: "Empezar proyecto", completed: true },
     { text: "Contar cuantos todos tengo", completed: false },
     { text: "Filtrar todos", completed: false },
     { text: "BREJEBREJEBREJE", completed: false },
-  ]);
+  ]); */
+  const { items: todos, saveItems: saveTodos } = useLocalStorage("todos", []);
 
   const [searchValue, setSearchValue] = useState("");
-  useLocalStorage("brebre", ["jajaj"]);
 
   let searchedTodos = [];
   const completedTodos = todos.filter((todo) => todo.completed === true).length;
@@ -38,14 +38,14 @@ const TodoProvider = (props) => {
     const newTodos = [...todos];
     newTodos[todoIndex].completed = true;
     // Si no hubiese hecho el set con el array nuevo, al actualizar, se me mostaría el array viejo MÁS los elementos nuevos, y eso nanai-
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (
