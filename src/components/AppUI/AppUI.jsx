@@ -5,6 +5,7 @@ import TodoList from "../TodoList/TodoList";
 import TodoSearch from "../TodoSearch/TodoSearch";
 import TodoCounter from "../TodoCounter/TodoCounter";
 import Modal from "../Modal/Modal";
+import CreateTodo from "../CreateTodo/CreateTodo";
 const AppUI = () => {
   const {
     todos,
@@ -44,15 +45,7 @@ const AppUI = () => {
 
       {openModal && (
         <Modal>
-          <input></input>
-          <ul>
-            <li>
-              <button>Cancelar</button>
-            </li>
-            <li>
-              <button>Añadir</button>
-            </li>
-          </ul>
+          <CreateTodo />
         </Modal>
       )}
     </div>
