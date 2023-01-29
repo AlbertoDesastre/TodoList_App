@@ -11,7 +11,12 @@ const TodoProvider = (props) => {
     { text: "Filtrar todos", completed: false },
     { text: "BREJEBREJEBREJE", completed: false },
   ]); */
-  const { items: todos, saveItems: saveTodos } = useLocalStorage("todos", []);
+  const {
+    items: todos,
+    saveItems: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("todos", []);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -58,6 +63,8 @@ const TodoProvider = (props) => {
         deleteTodo,
         searchValue,
         setSearchValue,
+        loading,
+        error,
       }}
     >
       {props.children}
