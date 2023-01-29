@@ -6,6 +6,7 @@ import TodoSearch from "../TodoSearch/TodoSearch";
 import TodoCounter from "../TodoCounter/TodoCounter";
 import Modal from "../Modal/Modal";
 import CreateTodo from "../CreateTodo/CreateTodo";
+import TodoForm from "../TodoForm/TodoForm";
 const AppUI = () => {
   const {
     todos,
@@ -35,17 +36,11 @@ const AppUI = () => {
         deleteTodo={deleteTodo}
       />
 
-      <button
-        onClick={() => {
-          setOpenModal(!openModal);
-        }}
-      >
-        CREAR COSAS
-      </button>
+      <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />
 
       {openModal && (
         <Modal>
-          <CreateTodo />
+          <TodoForm />
         </Modal>
       )}
     </div>
