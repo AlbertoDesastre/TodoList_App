@@ -17,8 +17,8 @@ const TodoProvider = (props) => {
     loading,
     error,
   } = useLocalStorage("todos", []);
-
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   let searchedTodos = [];
   const completedTodos = todos.filter((todo) => todo.completed === true).length;
@@ -37,6 +37,12 @@ const TodoProvider = (props) => {
   } else {
     searchedTodos = todos;
   }
+
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({ text: text, completed: false });
+    saveTodos(newTodos);
+  };
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     // Creo un array completamente nuevo, porque después mi intención es actualizar el Estado del array con su nuevo "todo completed."
@@ -63,8 +69,11 @@ const TodoProvider = (props) => {
         deleteTodo,
         searchValue,
         setSearchValue,
+        addTodo,
         loading,
         error,
+        openModal,
+        setOpenModal,
       }}
     >
       {props.children}
