@@ -4,8 +4,7 @@ import { useContext } from "react";
 import TodoList from "../TodoList/TodoList";
 import TodoSearch from "../TodoSearch/TodoSearch";
 import TodoCounter from "../TodoCounter/TodoCounter";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-
+import Modal from "../Modal/Modal";
 const AppUI = () => {
   const {
     todos,
@@ -15,6 +14,8 @@ const AppUI = () => {
     deleteTodo,
     loading,
     error,
+    openModal,
+    setOpenModal,
   } = useContext(TodoContext);
 
   return (
@@ -32,6 +33,28 @@ const AppUI = () => {
         completeTodo={completeTodo}
         deleteTodo={deleteTodo}
       />
+
+      <button
+        onClick={() => {
+          setOpenModal(!openModal);
+        }}
+      >
+        CREAR COSAS
+      </button>
+
+      {openModal && (
+        <Modal>
+          <input></input>
+          <ul>
+            <li>
+              <button>Cancelar</button>
+            </li>
+            <li>
+              <button>Añadir</button>
+            </li>
+          </ul>
+        </Modal>
+      )}
     </div>
   );
 };
