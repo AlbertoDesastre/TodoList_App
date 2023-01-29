@@ -9,7 +9,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 const AppUI = () => {
   const { todos, completedTodos, searchedTodos, completeTodo, deleteTodo } =
     useContext(TodoContext);
-  // useLocalStorage("brebre", { nombre: "aaa", apellido: "eee" });
+  useLocalStorage("AAAAAAAAAAAA", ["UUUU", { a: "b" }]);
 
   return (
     <div className="App">

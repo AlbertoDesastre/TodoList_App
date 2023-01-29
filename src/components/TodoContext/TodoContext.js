@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 //primero se crea el contexto
 const TodoContext = createContext();
@@ -12,6 +13,7 @@ const TodoProvider = (props) => {
   ]);
 
   const [searchValue, setSearchValue] = useState("");
+  useLocalStorage("brebre", ["jajaj"]);
 
   let searchedTodos = [];
   const completedTodos = todos.filter((todo) => todo.completed === true).length;
