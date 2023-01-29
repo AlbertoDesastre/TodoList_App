@@ -4,10 +4,12 @@ import { useContext } from "react";
 import TodoList from "../TodoList/TodoList";
 import TodoSearch from "../TodoSearch/TodoSearch";
 import TodoCounter from "../TodoCounter/TodoCounter";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const AppUI = () => {
   const { todos, completedTodos, searchedTodos, completeTodo, deleteTodo } =
     useContext(TodoContext);
+  // useLocalStorage("brebre", { nombre: "aaa", apellido: "eee" });
 
   return (
     <div className="App">
