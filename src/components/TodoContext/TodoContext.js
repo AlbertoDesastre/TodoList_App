@@ -39,9 +39,8 @@ const TodoProvider = (props) => {
   }
 
   const addTodo = (text) => {
-    console.log(text);
-    const newTodo = { text: text, completed: false };
-    const newTodos = [...todos, newTodo];
+    const newTodos = [...todos];
+    newTodos.push({ text: text, completed: false });
     saveTodos(newTodos);
   };
   const completeTodo = (text) => {
