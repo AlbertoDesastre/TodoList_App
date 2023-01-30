@@ -22,7 +22,7 @@ const AppUI = () => {
 
   return (
     <div className="App">
-      <h1>Yeah, I'm working</h1>
+      {/* LEGACY CODE -->   <h1>Yeah, I'm working</h1> */}
       <TodoCounter todos={todos} completedTodos={completedTodos} />
       <TodoSearch />
 

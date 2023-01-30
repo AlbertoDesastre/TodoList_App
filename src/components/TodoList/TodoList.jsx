@@ -1,7 +1,7 @@
 import "./TodoList.scss";
 const TodoList = ({ searchedTodos, deleteTodo, completeTodo }) => {
   return (
-    <ul>
+    <ul className="ul-todoList">
       {searchedTodos.map((todo) => {
         return (
           <li key={todo.text} className="li li-todoList">
