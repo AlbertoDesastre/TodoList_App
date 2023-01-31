@@ -7,6 +7,7 @@ import TodoCounter from "../TodoCounter/TodoCounter";
 import Modal from "../Modal/Modal";
 import CreateTodo from "../CreateTodo/CreateTodo";
 import TodoForm from "../TodoForm/TodoForm";
+import TodoItem from "../TodoItem/TodoItem";
 const AppUI = () => {
   const {
     todos,
@@ -30,11 +31,13 @@ const AppUI = () => {
       {error && "Somebody blew out the app. Call emergency."}
       {!loading && !todos.length && "Create your first todo!"}
 
-      <TodoList
-        searchedTodos={searchedTodos}
-        completeTodo={completeTodo}
-        deleteTodo={deleteTodo}
-      />
+      <TodoList>
+        <TodoItem
+          searchedTodos={searchedTodos}
+          completeTodo={completeTodo}
+          deleteTodo={deleteTodo}
+        />
+      </TodoList>
 
       <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />
 
