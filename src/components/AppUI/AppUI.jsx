@@ -9,6 +9,8 @@ import CreateTodo from "../CreateTodo/CreateTodo";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoItem from "../TodoItem/TodoItem";
 import TodoHeader from "../TodoHeader/TodoHeader";
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 const AppUI = () => {
   const {
     todos,
@@ -30,9 +32,9 @@ const AppUI = () => {
         <TodoSearch />
       </TodoHeader>
 
-      {loading && "Loading your todos, stand by..."}
-      {error && "Somebody blew out the app. Call emergency."}
-      {!loading && !todos.length && "Create your first todo!"}
+      {loading && <LoadingComponent />}
+      {error && <ErrorComponent error={error} />}
+      {!loading && !todos.length && "Crea tu primer Todo crack!"}
 
       <TodoList>
         <TodoItem
