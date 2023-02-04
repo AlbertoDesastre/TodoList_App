@@ -8,10 +8,15 @@ import Modal from "../Modal/Modal";
 import CreateTodo from "../CreateTodo/CreateTodo";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoItem from "../TodoItem/TodoItem";
+import TodoHeader from "../TodoHeader/TodoHeader";
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 const AppUI = () => {
   const {
     todos,
     completedTodos,
+    searchValue,
+    setSearchValue,
     searchedTodos,
     completeTodo,
     deleteTodo,
@@ -24,19 +29,25 @@ const AppUI = () => {
   return (
     <div className="App">
       {/* LEGACY CODE -->   <h1>Yeah, I'm working</h1> */}
-      <TodoCounter todos={todos} completedTodos={completedTodos} />
-      <TodoSearch />
+      <TodoHeader>
+        <TodoCounter todos={todos} completedTodos={completedTodos} />
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
-      {loading && "Loading your todos, stand by..."}
-      {error && "Somebody blew out the app. Call emergency."}
-      {!loading && !todos.length && "Create your first todo!"}
+        {loading && <LoadingComponent />}
+        {error && <ErrorComponent error={error} />}
+        {!loading && !todos.length && <p>Crea tu primer Todo crack!</p>}
+      </TodoHeader>
 
       <TodoList>
-        <TodoItem
-          searchedTodos={searchedTodos}
-          completeTodo={completeTodo}
-          deleteTodo={deleteTodo}
-        />
+        {searchedTodos.map((todo) => {
+          return (
+            <TodoItem
+              todo={todo}
+              completeTodo={completeTodo}
+              deleteTodo={deleteTodo}
+            />
+          );
+        })}
       </TodoList>
 
       <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />

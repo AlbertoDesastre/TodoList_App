@@ -2,9 +2,7 @@ import { TodoContext } from "../TodoContext/TodoContext";
 import { useContext } from "react";
 import "./TodoSearch.scss";
 
-const TodoSearch = () => {
-  const { searchValue, setSearchValue } = useContext(TodoContext);
-
+const TodoSearch = ({ searchValue, setSearchValue }) => {
   /* Ojo!! Porque no es lo mismo haber puesto en el "onChange" esto:
   onChange={(e)=>{
     setSearchValue(e.target.value)
