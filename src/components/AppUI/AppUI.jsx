@@ -8,6 +8,7 @@ import Modal from "../Modal/Modal";
 import CreateTodo from "../CreateTodo/CreateTodo";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoItem from "../TodoItem/TodoItem";
+import TodoHeader from "../TodoHeader/TodoHeader";
 const AppUI = () => {
   const {
     todos,
@@ -24,8 +25,10 @@ const AppUI = () => {
   return (
     <div className="App">
       {/* LEGACY CODE -->   <h1>Yeah, I'm working</h1> */}
-      <TodoCounter todos={todos} completedTodos={completedTodos} />
-      <TodoSearch />
+      <TodoHeader>
+        <TodoCounter todos={todos} completedTodos={completedTodos} />
+        <TodoSearch />
+      </TodoHeader>
 
       {loading && "Loading your todos, stand by..."}
       {error && "Somebody blew out the app. Call emergency."}
