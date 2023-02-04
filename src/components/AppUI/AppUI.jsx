@@ -15,6 +15,8 @@ const AppUI = () => {
   const {
     todos,
     completedTodos,
+    searchValue,
+    setSearchValue,
     searchedTodos,
     completeTodo,
     deleteTodo,
@@ -29,19 +31,23 @@ const AppUI = () => {
       {/* LEGACY CODE -->   <h1>Yeah, I'm working</h1> */}
       <TodoHeader>
         <TodoCounter todos={todos} completedTodos={completedTodos} />
-        <TodoSearch />
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+        {loading && <LoadingComponent />}
+        {error && <ErrorComponent error={error} />}
+        {!loading && !todos.length && <p>Crea tu primer Todo crack!</p>}
       </TodoHeader>
 
-      {loading && <LoadingComponent />}
-      {error && <ErrorComponent error={error} />}
-      {!loading && !todos.length && "Crea tu primer Todo crack!"}
-
       <TodoList>
-        <TodoItem
-          searchedTodos={searchedTodos}
-          completeTodo={completeTodo}
-          deleteTodo={deleteTodo}
-        />
+        {searchedTodos.map((todo) => {
+          return (
+            <TodoItem
+              todo={todo}
+              completeTodo={completeTodo}
+              deleteTodo={deleteTodo}
+            />
+          );
+        })}
       </TodoList>
 
       <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />
