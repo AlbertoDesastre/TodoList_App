@@ -12,7 +12,7 @@ const TodoSearch = ({ searchValue, setSearchValue }) => {
   Si hago la opción arriba comentada, y pulsas cualquier tecla, en la consola te mostrará el valor antiguo todo el rato.
   */
   const onChangeSearchValue = (e) => {
-    console.log(e.target.value);
+    /*  console.log(e.target.value); */
     setSearchValue(e.target.value);
   };
 

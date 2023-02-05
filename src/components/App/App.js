@@ -53,30 +53,29 @@ function App() {
         onError={() => <ErrorComponent />}
         onEmptyTodos={() => <EmptyTodos />}
         searchedTodos={searchedTodos}
-        render={(todo) => (
+        onEmptySearchResult={(searchText) => (
+          <p>No hay resultados de búsqueda para "{searchText}" </p>
+        )}
+        searchText={searchValue}
+        todos={todos}
+        // RENDER PROPS
+        // render={ todo => (
+        //   <TodoItem
+        //     todo={todo}
+        //     completeTodo={() => completeTodo()}
+        //     deleteTodo={() => deleteTodo()}
+        //   />
+        // )}
+      >
+        {/* Children como función */}
+        {(todo) => (
           <TodoItem
             todo={todo}
             completeTodo={completeTodo}
             deleteTodo={deleteTodo}
           />
         )}
-      />
-
-      {/*       <TodoList>
-        {loading && <LoadingComponent />}
-        {error && <ErrorComponent error={error} />}
-        {!loading && !todos.length && <EmptyTodos />}
-
-        {searchedTodos.map((todo) => {
-          return (
-            <TodoItem
-              todo={todo}
-              completeTodo={completeTodo}
-              deleteTodo={deleteTodo}
-            />
-          );
-        })}
-      </TodoList> */}
+      </TodoList>
 
       <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />
 
