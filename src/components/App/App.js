@@ -11,6 +11,7 @@ import TodoItem from "../TodoItem/TodoItem";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import EmptyTodos from "../EmptyTodos/EmptyTodos";
 
 function App() {
   const {
@@ -34,13 +35,38 @@ function App() {
       <TodoHeader>
         <TodoCounter todos={todos} completedTodos={completedTodos} />
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
-        {loading && <LoadingComponent />}
-        {error && <ErrorComponent error={error} />}
-        {!loading && !todos.length && <p>Crea tu primer Todo crack!</p>}
       </TodoHeader>
 
-      <TodoList>
+      <TodoList
+        loading={loading}
+        /* Mucho OJO!!
+        No es lo mismo este código: 
+
+        onLoading={() => {<LoadingComponent />;}}
+
+        Que este:
+         
+        onLoading={() => <LoadingComponent />}
+        */
+        onLoading={() => <LoadingComponent />}
+        error={error}
+        onError={() => <ErrorComponent />}
+        onEmptyTodos={() => <EmptyTodos />}
+        searchedTodos={searchedTodos}
+        render={(todo) => (
+          <TodoItem
+            todo={todo}
+            completeTodo={completeTodo}
+            deleteTodo={deleteTodo}
+          />
+        )}
+      />
+
+      {/*       <TodoList>
+        {loading && <LoadingComponent />}
+        {error && <ErrorComponent error={error} />}
+        {!loading && !todos.length && <EmptyTodos />}
+
         {searchedTodos.map((todo) => {
           return (
             <TodoItem
@@ -50,7 +76,7 @@ function App() {
             />
           );
         })}
-      </TodoList>
+      </TodoList> */}
 
       <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />
 
