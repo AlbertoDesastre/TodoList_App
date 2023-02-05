@@ -1,6 +1,6 @@
-import "./AppUI.scss";
-import { TodoContext } from "../TodoContext/TodoContext";
-import { useContext } from "react";
+import "./App.scss";
+import { useTodos } from "./useTodos";
+
 import TodoList from "../TodoList/TodoList";
 import TodoSearch from "../TodoSearch/TodoSearch";
 import TodoCounter from "../TodoCounter/TodoCounter";
@@ -11,7 +11,8 @@ import TodoItem from "../TodoItem/TodoItem";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
-const AppUI = () => {
+
+function App() {
   const {
     todos,
     completedTodos,
@@ -24,7 +25,8 @@ const AppUI = () => {
     error,
     openModal,
     setOpenModal,
-  } = useContext(TodoContext);
+    addTodo,
+  } = useTodos();
 
   return (
     <div className="App">
@@ -54,11 +56,11 @@ const AppUI = () => {
 
       {openModal && (
         <Modal>
-          <TodoForm />
+          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </div>
   );
-};
+}
 
-export { AppUI };
+export { App };
