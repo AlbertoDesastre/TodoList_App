@@ -37,7 +37,32 @@ function App() {
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
 
-      <TodoList>
+      <TodoList
+        loading={loading}
+        /* Mucho OJO!!
+        No es lo mismo este código: 
+
+        onLoading={() => {<LoadingComponent />;}}
+
+        Que este:
+         
+        onLoading={() => <LoadingComponent />}
+        */
+        onLoading={() => <LoadingComponent />}
+        error={error}
+        onError={() => <ErrorComponent />}
+        onEmptyTodos={() => <EmptyTodos />}
+        searchedTodos={searchedTodos}
+        render={(todo) => (
+          <TodoItem
+            todo={todo}
+            completeTodo={completeTodo}
+            deleteTodo={deleteTodo}
+          />
+        )}
+      />
+
+      {/*       <TodoList>
         {loading && <LoadingComponent />}
         {error && <ErrorComponent error={error} />}
         {!loading && !todos.length && <EmptyTodos />}
@@ -51,7 +76,7 @@ function App() {
             />
           );
         })}
-      </TodoList>
+      </TodoList> */}
 
       <CreateTodo openModal={openModal} setOpenModal={setOpenModal} />
 
