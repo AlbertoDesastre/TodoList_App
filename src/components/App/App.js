@@ -58,14 +58,15 @@ function App() {
         )}
         searchText={searchValue}
         todos={todos}
-        render={(todo) => (
+      >
+        {(todo) => (
           <TodoItem
             todo={todo}
             completeTodo={completeTodo}
             deleteTodo={deleteTodo}
           />
         )}
-      />
+      </TodoList>
 
       {/*       <TodoList>
         {loading && <LoadingComponent />}
