@@ -11,6 +11,7 @@ import TodoItem from "../TodoItem/TodoItem";
 import TodoHeader from "../TodoHeader/TodoHeader";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import EmptyTodos from "../EmptyTodos/EmptyTodos";
 
 function App() {
   const {
@@ -37,7 +38,7 @@ function App() {
 
         {loading && <LoadingComponent />}
         {error && <ErrorComponent error={error} />}
-        {!loading && !todos.length && <p>Crea tu primer Todo crack!</p>}
+        {!loading && !todos.length && <EmptyTodos />}
       </TodoHeader>
 
       <TodoList>
