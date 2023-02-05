@@ -53,6 +53,11 @@ function App() {
         onError={() => <ErrorComponent />}
         onEmptyTodos={() => <EmptyTodos />}
         searchedTodos={searchedTodos}
+        onEmptySearchResult={(searchText) => (
+          <p>No hay resultados de búsqueda para "{searchText}" </p>
+        )}
+        searchText={searchValue}
+        todos={todos}
         render={(todo) => (
           <TodoItem
             todo={todo}
