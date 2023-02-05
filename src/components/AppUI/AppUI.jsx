@@ -24,6 +24,7 @@ const AppUI = () => {
     error,
     openModal,
     setOpenModal,
+    addTodo,
   } = useContext(TodoContext);
 
   return (
@@ -54,7 +55,7 @@ const AppUI = () => {
 
       {openModal && (
         <Modal>
-          <TodoForm />
+          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </div>
