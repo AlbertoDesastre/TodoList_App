@@ -35,13 +35,13 @@ function App() {
       <TodoHeader>
         <TodoCounter todos={todos} completedTodos={completedTodos} />
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
-        {loading && <LoadingComponent />}
-        {error && <ErrorComponent error={error} />}
-        {!loading && !todos.length && <EmptyTodos />}
       </TodoHeader>
 
       <TodoList>
+        {loading && <LoadingComponent />}
+        {error && <ErrorComponent error={error} />}
+        {!loading && !todos.length && <EmptyTodos />}
+
         {searchedTodos.map((todo) => {
           return (
             <TodoItem
