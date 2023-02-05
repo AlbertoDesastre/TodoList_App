@@ -1,5 +1,3 @@
-import { TodoContext } from "../TodoContext/TodoContext";
-import { useContext } from "react";
 import "./TodoSearch.scss";
 
 const TodoSearch = ({ searchValue, setSearchValue }) => {
