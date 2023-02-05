@@ -1,7 +1,10 @@
 import "./TodoList.scss";
 
 const TodoList = (props) => {
-  console.log(props.children());
+  // Si le paso children, enontces
+  const renderFunction = props.children || props.render;
+  console.log(renderFunction);
+
   return (
     <section className="todoList-container">
       {/*  Si recibe "error" o "loading" cargará la función "onError" o
@@ -15,9 +18,7 @@ const TodoList = (props) => {
       {!props.loading &&
         !props.searchedTodos?.length &&
         props.onEmptySearchResult(props.searchText)}
-      <ul className="ul-todoList">
-        {props.todos.map((todo) => props.children(todo))}
-      </ul>
+      <ul className="ul-todoList">{props.searchedTodos.map(renderFunction)}</ul>
     </section>
   );
 };
