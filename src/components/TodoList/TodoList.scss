@@ -1,0 +1,13 @@
+.ul-todoList {
+  display: flex;
+  flex-direction: column;
+
+  .emptyTodos,
+  .loadingComponent {
+    margin-top: 12px;
+    place-self: center;
+    background-color: rgba(230, 210, 25, 0.789);
+    padding: 0.4rem;
+    border-radius: 20px;
+  }
+}
